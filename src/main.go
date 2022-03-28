@@ -5,12 +5,20 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"strings"
 )
 
 func main() {
 	const BotToken = "5271893873:AAExaXdEsAwbLO6zddr7Pw-LhxE2z8RmUXM"
 	baseUrl := fmt.Sprintf("https://api.telegram.org/bot%s/", BotToken)
 	GetMeReq(baseUrl, "getMe")
+
+	req, err := http.NewRequest("POST", "https://api.telegram.org/bot5271893873:AAExaXdEsAwbLO6zddr7Pw-LhxE2z8RmUXM/getME", strings.NewReader(""))
+
+	if err != nil {
+		log.Fatalf("http Error -> %s", err.Error())
+	}
+
 }
 
 func GetMeReq(baseUrl string, endPoint string) error {
